@@ -1,0 +1,17 @@
+1.
+db.collection.find({},
+{
+  user_id: 1,
+  firstName: 1,
+  lastname: 1,
+  _id: 0
+})
+
+2.
+db.collection.find({
+  firstName: "Grace"
+},
+{
+  email: 1,
+  password: 1
+})
