@@ -1,0 +1,35 @@
+1. feladat
+{"countries.0": "USA",
+"imdb.rating": {$gt: 5}}
+
+{title: 1, 
+countries: 1,
+"imdb.rating": 1}
+
+{"imdb.rating": -1}
+
+
+
+2. feladat
+db.users.find({"email":{"$regex": /.com/}},{"name": 1, "email": 1})
+
+
+
+3. feladat
+db.movies.aggregate([{ $match: { "year": { "$gt": 1950 } } }, { $group: { _id: "$rated", average: { $avg: "$runtime" } } }])
+
+
+
+4. feladat
+match (p:Person)-[:ACTED_IN]->(m:Movie)
+where m.released > 1960
+return p.name as `szinesz`, m.title as `filmcim`, m.released as `kiadas eve`
+order by m.released desc
+
+
+
+5. feladat
+match (p:Person)-[:ACTED_IN]->(m:Movie)
+with p.name as `Actor`, p.born as `BirthYear`, count(m.title) as `NumMoviesActedIn`
+where BirthYear > 1980
+return Actor, BirthYear, NumMoviesActedIn
